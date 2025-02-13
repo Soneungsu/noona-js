@@ -83,12 +83,18 @@ console.log(findSmallestElement(arr));
 //  500 X 0
 //  100 X 3
 function getMinimumCurrency(amount: number) {
-  const units: Array<number> = [50000, 10000, 5000, 1000, 500, 100];
-  const result: Record<number, number> = {};
-  for (const unit of units) {
+  const arr: Array<number> = [50000, 10000, 5000, 1000, 500, 100];
+  const result: { [key: number]: number } = {};
+  for (let unit of arr) {
     result[unit] = Math.floor(amount / unit);
     amount %= unit;
   }
   console.log(result);
 }
-getMinimumCurrency(12300);
+getMinimumCurrency(13200);
+function test(...numbers: Array<number>) {
+  // console.log(numbers);
+  return numbers.reduce((a, b) => a + b);
+}
+
+console.log(test(1, 2, 3, 4));
