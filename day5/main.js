@@ -66,13 +66,22 @@ console.log(findSmallestElement(arr));
 //  500 X 0
 //  100 X 3
 function getMinimumCurrency(amount) {
-    var units = [50000, 10000, 5000, 1000, 500, 100];
+    var arr = [50000, 10000, 5000, 1000, 500, 100];
     var result = {};
-    for (var _i = 0, units_1 = units; _i < units_1.length; _i++) {
-        var unit = units_1[_i];
+    for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
+        var unit = arr_1[_i];
         result[unit] = Math.floor(amount / unit);
         amount %= unit;
     }
     console.log(result);
 }
-getMinimumCurrency(12300);
+getMinimumCurrency(13200);
+function test() {
+    var numbers = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        numbers[_i] = arguments[_i];
+    }
+    // console.log(numbers);
+    return numbers.reduce(function (a, b) { return a + b; });
+}
+console.log(test(1, 2, 3, 4));
