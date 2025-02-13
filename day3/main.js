@@ -2,11 +2,11 @@
 // 유저가 입력하는 숫자가 0인지 음수인지 양수인지 판단하는 프로그램을 만드시오
 const userInput = (userInputValue) => {
   if (userInputValue < 0) {
-    return console.log("음수");
+    console.log("음수");
   } else if (userInputValue === 0) {
-    return console.log("0");
+    console.log("0");
   } else {
-    return console.log("양수");
+    console.log("양수");
   }
 };
 
@@ -20,21 +20,21 @@ const userInput = (userInputValue) => {
 // less than 59 : F
 const totalResult = (result) => {
   if (result > 89) {
-    return console.log("A");
+    console.log("A");
   } else if (result > 79 && result < 90) {
-    return console.log("B");
+    console.log("B");
   } else if (result > 69 && result < 80) {
-    return console.log("C");
+    console.log("C");
   } else if (result > 59 && result < 70) {
-    return console.log("D");
+    console.log("D");
   } else {
-    return console.log("F");
+    console.log("F");
   }
 };
 
 // 문제 3
 // 한 지원자가 우리 회사에 지원을 했다. 지원자가 사용 가능한 스킬은 배열에 제공이 된다
-let skills = ["HTML", "CSS"];
+let skills = ["HTML", "CSS", "Javascript"];
 // Javascript와 React 둘 다 할 줄 안다면 “합격!” Javascript와 React 둘 중 하나만 할 줄 안다면 “예비”, 두 스킬이 없다면 “탈락” 을 보여주는 프로그램을 짜시오
 
 // input : let skills = ["HTML","CSS","Javascript","React"]
@@ -48,11 +48,11 @@ let skills = ["HTML", "CSS"];
 
 const test = () => {
   if (skills.includes("Javascript") && skills.includes("React")) {
-    return console.log("통과");
+    console.log("통과");
   } else if (skills.includes("Javascript") || skills.includes("React")) {
-    return console.log("예비");
+    console.log("예비");
   } else {
-    return console.log("탈락");
+    console.log("탈락");
   }
 };
 
