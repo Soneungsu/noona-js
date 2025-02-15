@@ -62,8 +62,8 @@ body .wrap .box-wrap main form .btn-wrap button:last-child {
 body .wrap .box-wrap footer {
   margin: 20px;
 }
-body .wrap .box-wrap footer div {
-  margin: 10px 0;
+body .wrap .box-wrap footer .result {
+  text-align: center;
 }
 body .wrap .box-wrap footer .chance-area {
   text-align: center;

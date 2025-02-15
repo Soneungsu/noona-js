@@ -9,12 +9,18 @@ let chance: number = 7;
 let computerRandom: number = 0;
 let gameOver: boolean = false;
 
+startBtn.addEventListener("click", play);
+resetBtn.addEventListener("click", reset);
+
 function pickRandonNum(): number {
   return (computerRandom = Math.floor(Math.random() * 100) + 1);
 }
+//웹페이지 첫 방문시 랜덤번호 실행
+computerRandom = pickRandonNum();
+console.log(computerRandom);
+//
 
-startBtn.addEventListener("click", () => {
-  //   console.log("hhh");
+function play() {
   const userInput: number = Number(inputValue.value);
   if (isNaN(userInput)) {
     alert("숫자를 입력하세요");
@@ -35,8 +41,23 @@ startBtn.addEventListener("click", () => {
   repository.push(userInput);
   console.log(repository);
   inputValue.value = "";
+
+  if (userInput === computerRandom) {
+    resultArea.textContent = "정답입니다.";
+    startBtn.disabled = true;
+    return;
+  }
+
   chance--;
   chanceArea.textContent = `${chance}번 남았습니다.`;
+
+  // 유저가 입력한 값이 랜덤숫자보다 클경우 "down"
+  // 유저가 입력한 값이 랜덤숫자보다 작을경우 "Up"
+  if (userInput > computerRandom) {
+    resultArea.textContent = "Down";
+  } else if (userInput < computerRandom) {
+    resultArea.textContent = "Up";
+  }
 
   if (chance === 0) {
     gameOver = true;
@@ -44,12 +65,14 @@ startBtn.addEventListener("click", () => {
     startBtn.disabled = true;
     chanceArea.textContent = "기회가 모두 소진되었습니다.";
   }
+}
 
-  pickRandonNum();
-});
-
-resetBtn.addEventListener("click", () => {
+function reset() {
   gameOver = false;
+  startBtn.disabled = false;
   chance = 7;
-  chanceArea.textContent = `chance:${chance}번`;
-});
+  chanceArea.textContent = `chance: ${chance}`;
+
+  computerRandom = pickRandonNum();
+  console.log(computerRandom);
+}
