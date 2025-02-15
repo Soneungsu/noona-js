@@ -12,12 +12,27 @@
   </head>
   <body>
     <div class="wrap">
-      <div>
-        <header></header>
+      <div class="box-wrap">
+        <header>
+          <h1>Number Guess Game</h1>
+        </header>
         <main>
-          <div>나는 메인</div>
+          <h2>Try to guess the number!</h2>
+          <form action="#">
+            <input
+              type="text"
+              placeholder="Please input a number from 1 to 100"
+            />
+            <div class="btn-wrap">
+              <button type="submit" id="startBtn">START</button>
+              <button type="submit" id="resetBtn">RESET</button>
+            </div>
+          </form>
         </main>
-        <footer></footer>
+        <footer>
+          <p class="result">you can watch result here!</p>
+          <div class="chance-area">chane: 7</div>
+        </footer>
       </div>
     </div>
     <script src="main.js"></script>
