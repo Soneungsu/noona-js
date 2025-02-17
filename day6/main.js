@@ -4,7 +4,7 @@ var inputValue = document.querySelector("input");
 var repository = [];
 var resultArea = document.querySelector(".result");
 var chanceArea = document.querySelector(".chance-area");
-var chance = 7;
+var chance = 3;
 var computerRandom = 0;
 var gameOver = false;
 startBtn.addEventListener("click", play);
@@ -61,8 +61,38 @@ function play() {
 function reset() {
     gameOver = false;
     startBtn.disabled = false;
-    chance = 7;
+    chance = 3;
     chanceArea.textContent = "chance: ".concat(chance);
     computerRandom = pickRandonNum();
     console.log(computerRandom);
 }
+// const startBtn = document.querySelector("#startBtn") as HTMLButtonElement;
+// const resetBtn = document.querySelector("#resetBtn") as HTMLButtonElement;
+// const resultArea = document.querySelector(".result") as HTMLElement;
+// const chanceArea = document.querySelector(".chance-area") as HTMLElement;
+// type GameElements = {
+//   startBtn: HTMLButtonElement;
+//   resetBtn: HTMLButtonElement;
+//   resultArea: HTMLElement;
+//   chanceArea: HTMLElement;
+// };
+// class NumberGuessingGame {
+//   private repository: Array<number> = [];
+//   private chance: number = 7;
+//   private gameOver: boolean = false;
+//   private startBtn: HTMLButtonElement;
+//   private resetBtn: HTMLButtonElement;
+//   private resultArea: HTMLElement;
+//   private chanceArea: HTMLElement;
+//   constructor(
+//     startBtn: HTMLButtonElement,
+//     resetBtn: HTMLButtonElement,
+//     resultArea: HTMLElement,
+//     chanceArea: HTMLElement
+//   ) {
+//     this.startBtn = startBtn;
+//     this.resetBtn = resetBtn;
+//     this.resultArea = resultArea;
+//     this.chanceArea = chanceArea;
+//   }
+// }
