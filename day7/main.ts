@@ -19,10 +19,19 @@
     }
     if (target.closest(".delete-btn")) {
       const todoItem = target.closest(".todolist-items");
+      //   console.log("ggg");
       if (todoItem) {
-        const todoText = todoItem?.querySelector("p")?.textContent;
+        const todoText = todoItem
+          ?.querySelector("p")
+          ?.textContent?.split(".")[1];
         const findIndex = todos.indexOf(todoText || "");
-        // console.log(findIndex);
+        console.log(findIndex);
+        console.log("hhh");
+
+        if (findIndex !== -1) {
+          todos.splice(findIndex, 1);
+          render();
+        }
       }
     }
   });
@@ -40,7 +49,7 @@
         (item, index) =>
           `<div class="todolist-items">
             <div class="item">
-              <p>${index + 1}. ${item}</p>
+              <p>${index + 1}.${item}</p>
             </div>
             <div class="done-delete-btn">
               <button class="check-btn"><i class="fa-solid fa-check"></i></button>
