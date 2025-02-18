@@ -4,7 +4,7 @@ var inputValue = document.querySelector("input");
 var repository = [];
 var resultArea = document.querySelector(".result");
 var chanceArea = document.querySelector(".chance-area");
-var chance = 3;
+var chance = 5;
 var computerRandom = 0;
 var gameOver = false;
 startBtn.addEventListener("click", play);
@@ -61,8 +61,9 @@ function play() {
 function reset() {
     gameOver = false;
     startBtn.disabled = false;
-    chance = 3;
+    chance = 5;
     chanceArea.textContent = "chance: ".concat(chance);
+    resultArea.textContent = "It has been initialized";
     inputValue.value = "";
     repository.length = 0;
     computerRandom = pickRandonNum();

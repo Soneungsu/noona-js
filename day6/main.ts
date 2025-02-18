@@ -5,7 +5,7 @@ const repository: Array<number> = [];
 
 let resultArea = document.querySelector(".result")!;
 let chanceArea = document.querySelector(".chance-area")!;
-let chance: number = 3;
+let chance: number = 5;
 let computerRandom: number = 0;
 let gameOver: boolean = false;
 
@@ -70,8 +70,9 @@ function play() {
 function reset() {
   gameOver = false;
   startBtn.disabled = false;
-  chance = 3;
+  chance = 5;
   chanceArea.textContent = `chance: ${chance}`;
+  resultArea.textContent = "It has been initialized";
   inputValue.value = "";
   repository.length = 0;
   computerRandom = pickRandonNum();
