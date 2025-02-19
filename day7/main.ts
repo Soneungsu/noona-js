@@ -11,16 +11,16 @@
 
     if (target.closest(".check-btn")) {
       const todoItem = target.closest(".todolist-items")!; // 클릭된 요소가 속한 .todolist-items 찾기
-      console.log(todoItem);
-      const todoText = todoItem?.querySelector<HTMLElement>("p")!;
-      console.log(todoText);
+      console.log("todoItem: ", todoItem);
+
+      const todoText = todoItem.querySelector("p")!;
+      console.log("todoText: ", todoText);
+
       const index = Array.prototype.slice
         .call(todolistWrap.children)
         .indexOf(todoItem);
-      //   console.log("index", index);
-      if (todoText) {
-        todoText.classList.toggle("active");
-      }
+      console.log("index", index);
+
       if (todos[index]) {
         todos[index].completed = !todos[index].completed;
         render();
@@ -56,11 +56,11 @@
     let newsHtml: string = todos
       .map(
         (item, index) =>
-          `<div class="todolist-items ${
-            todos[index].completed ? "change-color" : ""
-          }">
+          `<div class="todolist-items ${item.completed ? "change-color" : ""}">
             <div class="item">
-              <p>${index + 1}.${item}</p>
+              <p class="${item.completed ? "active" : ""}">${index + 1}.${
+            item.text
+          }</p>
             </div>
             <div class="done-delete-btn">
               <button class="check-btn"><i class="fa-solid fa-check"></i></button>

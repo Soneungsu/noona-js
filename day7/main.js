@@ -8,16 +8,13 @@
         var target = event.target;
         if (target.closest(".check-btn")) {
             var todoItem = target.closest(".todolist-items"); // 클릭된 요소가 속한 .todolist-items 찾기
-            console.log(todoItem);
-            var todoText = todoItem === null || todoItem === void 0 ? void 0 : todoItem.querySelector("p");
-            console.log(todoText);
+            console.log("todoItem: ", todoItem);
+            var todoText = todoItem.querySelector("p");
+            console.log("todoText: ", todoText);
             var index = Array.prototype.slice
                 .call(todolistWrap_1.children)
                 .indexOf(todoItem);
-            //   console.log("index", index);
-            if (todoText) {
-                todoText.classList.toggle("active");
-            }
+            console.log("index", index);
             if (todos_1[index]) {
                 todos_1[index].completed = !todos_1[index].completed;
                 render();
@@ -50,7 +47,7 @@
     function render() {
         var newsHtml = todos_1
             .map(function (item, index) {
-            return "<div class=\"todolist-items ".concat(todos_1[index].completed ? "change-color" : "", "\">\n            <div class=\"item\">\n              <p>").concat(index + 1, ".").concat(item, "</p>\n            </div>\n            <div class=\"done-delete-btn\">\n              <button class=\"check-btn\"><i class=\"fa-solid fa-check\"></i></button>\n              <button class=\"delete-btn\"><i class=\"fa-solid fa-trash\"></i></button>\n            </div>\n        </div>");
+            return "<div class=\"todolist-items ".concat(item.completed ? "change-color" : "", "\">\n            <div class=\"item\">\n              <p class=\"").concat(item.completed ? "active" : "", "\">").concat(index + 1, ".").concat(item.text, "</p>\n            </div>\n            <div class=\"done-delete-btn\">\n              <button class=\"check-btn\"><i class=\"fa-solid fa-check\"></i></button>\n              <button class=\"delete-btn\"><i class=\"fa-solid fa-trash\"></i></button>\n            </div>\n        </div>");
         })
             .join("");
         todolistWrap_1.innerHTML = newsHtml;
