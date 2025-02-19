@@ -1,36 +1,48 @@
 {
     var todos_1 = [];
+    //   const ff: Array<string> = [];
     var inputValue_1 = document.querySelector("#input-Value");
     var addBtn = document.querySelector(".add-todolist");
     var todolistWrap_1 = document.querySelector(".todolist-wrap");
     todolistWrap_1.addEventListener("click", function (event) {
-        var _a, _b;
         var target = event.target;
         if (target.closest(".check-btn")) {
             var todoItem = target.closest(".todolist-items"); // 클릭된 요소가 속한 .todolist-items 찾기
-            var todoText = todoItem === null || todoItem === void 0 ? void 0 : todoItem.querySelector("p"); // 해당 항목의 텍스트(p)를 찾음
+            console.log(todoItem);
+            var todoText = todoItem === null || todoItem === void 0 ? void 0 : todoItem.querySelector("p");
+            console.log(todoText);
+            var index = Array.prototype.slice
+                .call(todolistWrap_1.children)
+                .indexOf(todoItem);
+            //   console.log("index", index);
             if (todoText) {
                 todoText.classList.toggle("active");
             }
-        }
-        if (target.closest(".delete-btn")) {
-            var todoItem = target.closest(".todolist-items");
-            //   console.log("ggg");
-            if (todoItem) {
-                var todoText = (_b = (_a = todoItem === null || todoItem === void 0 ? void 0 : todoItem.querySelector("p")) === null || _a === void 0 ? void 0 : _a.textContent) === null || _b === void 0 ? void 0 : _b.split(".")[1];
-                var findIndex = todos_1.indexOf(todoText || "");
-                console.log(findIndex);
-                console.log("hhh");
-                if (findIndex !== -1) {
-                    todos_1.splice(findIndex, 1);
-                    render();
-                }
+            if (todos_1[index]) {
+                todos_1[index].completed = !todos_1[index].completed;
+                render();
             }
         }
+        // if (target.closest(".delete-btn")) {
+        //   const todoItem = target.closest(".todolist-items");
+        //   //   console.log("ggg");
+        //   if (todoItem) {
+        //     const todoText = todoItem
+        //       ?.querySelector("p")
+        //       ?.textContent?.split(".")[1];
+        //     const findIndex = todos.indexOf(todoText || "");
+        //     console.log(findIndex);
+        //     console.log("hhh");
+        //     if (findIndex !== -1) {
+        //       todos.splice(findIndex, 1);
+        //       render();
+        //     }
+        //   }
+        // }
     });
     addBtn.addEventListener("click", function () {
         if (inputValue_1.value.trim() !== "") {
-            todos_1.push(inputValue_1.value);
+            todos_1.push({ text: inputValue_1.value, completed: false });
             inputValue_1.value = "";
             render();
         }
@@ -38,7 +50,7 @@
     function render() {
         var newsHtml = todos_1
             .map(function (item, index) {
-            return "<div class=\"todolist-items\">\n            <div class=\"item\">\n              <p>".concat(index + 1, ".").concat(item, "</p>\n            </div>\n            <div class=\"done-delete-btn\">\n              <button class=\"check-btn\"><i class=\"fa-solid fa-check\"></i></button>\n              <button class=\"delete-btn\"><i class=\"fa-solid fa-trash\"></i></button>\n            </div>\n        </div>");
+            return "<div class=\"todolist-items ".concat(todos_1[index].completed ? "change-color" : "", "\">\n            <div class=\"item\">\n              <p>").concat(index + 1, ".").concat(item, "</p>\n            </div>\n            <div class=\"done-delete-btn\">\n              <button class=\"check-btn\"><i class=\"fa-solid fa-check\"></i></button>\n              <button class=\"delete-btn\"><i class=\"fa-solid fa-trash\"></i></button>\n            </div>\n        </div>");
         })
             .join("");
         todolistWrap_1.innerHTML = newsHtml;

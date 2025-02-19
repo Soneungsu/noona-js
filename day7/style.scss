@@ -4,60 +4,73 @@ body {
   .wrap {
     min-height: 100vh;
     background: darkorchid;
-    header {
-      height: 100px;
-      nav {
-        height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .main-container {
+      width: 500px;
+      height: 500px;
+      background: #fff;
+      border-radius: 20px;
+      header {
+        height: 100px;
+        nav {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          h1 {
+            margin: 0;
+            font-size: 30px;
+          }
+        }
+      }
+      //--start main==
+      main {
         display: flex;
         justify-content: center;
         align-items: center;
-        h1 {
-          margin: 0;
-          font-size: 30px;
-        }
-      }
-    }
-    //--start main==
-    main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .main-wrap {
-        width: 40%;
+        .main-wrap {
+          width: 70%;
 
-        .input-wrap {
-          width: 100%;
-          justify-content: center;
-          align-items: center;
-          display: flex;
-          input {
+          .input-wrap {
             width: 100%;
-            text-align: center;
-            height: 30px;
-            border-radius: 10px;
-          }
-          .add-todolist {
-            border: none;
-            background: none;
-            font-size: 24px;
-            cursor: pointer;
-          }
-        }
-        .todolist-items {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-right: 30px;
-          height: 30px;
-          margin-top: 10px;
-          p.active {
-            text-decoration: line-through;
-          }
-          .done-delete-btn {
-            button {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            input {
+              width: 100%;
+              text-align: center;
+              height: 30px;
+              border-radius: 10px;
+            }
+            .add-todolist {
               border: none;
               background: none;
+              font-size: 24px;
               cursor: pointer;
+            }
+          }
+          .todolist-items {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-right: 30px;
+            height: 30px;
+            margin-top: 10px;
+            p.active {
+              text-decoration: line-through !important;
+            }
+
+            .done-delete-btn {
+              button {
+                border: none;
+                background: none;
+                cursor: pointer;
+              }
+            }
+            &.change-color {
+              background: #e2e2e2;
             }
           }
         }

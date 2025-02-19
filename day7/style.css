@@ -5,47 +5,56 @@ body {
 body .wrap {
   min-height: 100vh;
   background: darkorchid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-body .wrap header {
+body .wrap .main-container {
+  width: 500px;
+  height: 500px;
+  background: #fff;
+  border-radius: 20px;
+}
+body .wrap .main-container header {
   height: 100px;
 }
-body .wrap header nav {
+body .wrap .main-container header nav {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-body .wrap header nav h1 {
+body .wrap .main-container header nav h1 {
   margin: 0;
   font-size: 30px;
 }
-body .wrap main {
+body .wrap .main-container main {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-body .wrap main .main-wrap {
-  width: 40%;
+body .wrap .main-container main .main-wrap {
+  width: 70%;
 }
-body .wrap main .main-wrap .input-wrap {
+body .wrap .main-container main .main-wrap .input-wrap {
   width: 100%;
   justify-content: center;
   align-items: center;
   display: flex;
 }
-body .wrap main .main-wrap .input-wrap input {
+body .wrap .main-container main .main-wrap .input-wrap input {
   width: 100%;
   text-align: center;
   height: 30px;
   border-radius: 10px;
 }
-body .wrap main .main-wrap .input-wrap .add-todolist {
+body .wrap .main-container main .main-wrap .input-wrap .add-todolist {
   border: none;
   background: none;
   font-size: 24px;
   cursor: pointer;
 }
-body .wrap main .main-wrap .todolist-items {
+body .wrap .main-container main .main-wrap .todolist-items {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -53,13 +62,16 @@ body .wrap main .main-wrap .todolist-items {
   height: 30px;
   margin-top: 10px;
 }
-body .wrap main .main-wrap .todolist-items p.active {
-  text-decoration: line-through;
+body .wrap .main-container main .main-wrap .todolist-items p.active {
+  text-decoration: line-through !important;
 }
-body .wrap main .main-wrap .todolist-items .done-delete-btn button {
+body .wrap .main-container main .main-wrap .todolist-items .done-delete-btn button {
   border: none;
   background: none;
   cursor: pointer;
+}
+body .wrap .main-container main .main-wrap .todolist-items.change-color {
+  background: #e2e2e2;
 }
 
 /*# sourceMappingURL=style.css.map */
