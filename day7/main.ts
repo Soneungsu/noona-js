@@ -26,23 +26,22 @@
         render();
       }
     }
-    // if (target.closest(".delete-btn")) {
-    //   const todoItem = target.closest(".todolist-items");
-    //   //   console.log("ggg");
-    //   if (todoItem) {
-    //     const todoText = todoItem
-    //       ?.querySelector("p")
-    //       ?.textContent?.split(".")[1];
-    //     const findIndex = todos.indexOf(todoText || "");
-    //     console.log(findIndex);
-    //     console.log("hhh");
 
-    //     if (findIndex !== -1) {
-    //       todos.splice(findIndex, 1);
-    //       render();
-    //     }
-    //   }
-    // }
+    //삭제하기 만들기
+    if (target.closest(".delete-btn")) {
+      const todoItem = target.closest(".todolist-items");
+      console.log("todoItem: ", todoItem);
+
+      const todoText = todoItem?.querySelector("p");
+      console.log(todoText);
+      const index = Array.prototype.slice
+        .call(todolistWrap.children)
+        .indexOf(todoItem);
+      if (index !== -1) {
+        todos.splice(index, 1); // 해당 인덱스의 항목 삭제
+        render(); // 삭제 후 화면 갱신
+      }
+    }
   });
   addBtn.addEventListener("click", () => {
     if (inputValue.value.trim() !== "") {
