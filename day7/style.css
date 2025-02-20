@@ -54,6 +54,19 @@ body .wrap .main-container main .main-wrap .input-wrap .add-todolist {
   font-size: 24px;
   cursor: pointer;
 }
+body .wrap .main-container main .main-wrap .tab-btn {
+  margin: 10px 0;
+}
+body .wrap .main-container main .main-wrap .tab-btn button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 60px;
+  padding: 0;
+}
+body .wrap .main-container main .main-wrap .tab-btn button.move {
+  border-bottom: 4px solid sandybrown;
+}
 body .wrap .main-container main .main-wrap .todolist-items {
   display: flex;
   justify-content: space-between;

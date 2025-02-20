@@ -5,6 +5,17 @@
     const inputValue = document.querySelector("#input-Value");
     const addBtn = document.querySelector(".add-todolist");
     const todolistWrap = document.querySelector(".todolist-wrap");
+    const tabBtn = document.querySelectorAll(".tab-btn button");
+    let filterStatus = "all";
+    tabBtn[0].classList.add("move");
+    tabBtn.forEach((btn) => {
+        btn.addEventListener("click", function () {
+            tabBtn.forEach((b) => b.classList.remove("move"));
+            this.classList.add("move"); // 클릭된 버튼에 추가
+            filterStatus = this.id;
+            render(); // 필터링된 목록을 다시 렌더링
+        });
+    });
     let filterText = "";
     inputValue.addEventListener("keydown", (event) => {
         if (event.key === "Enter" && inputValue.value.trim() !== "") {
@@ -63,9 +74,14 @@
         });
     });
     function render() {
-        const filteredTodos = filterText === ""
-            ? todos // ✅ 필터가 없을 땐 전체 목록 표시
-            : todos.filter((todo) => todo.text.toLowerCase().includes(filterText));
+        let filteredTodos = todos;
+        // ✅ 현재 필터링 상태에 따라 분기 처리
+        if (filterStatus === "ing") {
+            filteredTodos = todos.filter((todo) => !todo.completed);
+        }
+        else if (filterStatus === "done") {
+            filteredTodos = todos.filter((todo) => todo.completed);
+        }
         todolistWrap.innerHTML = filteredTodos
             .map((item, index) => `<div class="todolist-items ${item.completed ? "change-color" : ""}" data-index="${todos.indexOf(item)}">
             <div class="item">

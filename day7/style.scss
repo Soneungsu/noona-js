@@ -51,6 +51,21 @@ body {
               cursor: pointer;
             }
           }
+          .tab-btn {
+            margin: 10px 0;
+
+            button {
+              border: none;
+              background: none;
+              cursor: pointer;
+              width: 60px;
+              padding: 0;
+              &.move {
+                // `&` 사용해서 `button.move`로 자동 변환
+                border-bottom: 4px solid sandybrown;
+              }
+            }
+          }
           .todolist-items {
             display: flex;
             justify-content: space-between;
