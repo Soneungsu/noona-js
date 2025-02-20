@@ -5,7 +5,7 @@
   const addBtn = document.querySelector<HTMLButtonElement>(".add-todolist")!;
   const todolistWrap =
     document.querySelector<HTMLDivElement>(".todolist-wrap")!;
-
+  let filterText = "";
   todolistWrap.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
 
@@ -47,15 +47,33 @@
     if (inputValue.value.trim() !== "") {
       todos.push({ text: inputValue.value, completed: false });
       inputValue.value = "";
+      filterText = "";
       render();
     }
   });
 
+  // 🔍 기존 입력창(inputValue)에서 입력값 변경 시 필터링 실행
+  document.addEventListener("DOMContentLoaded", function () {
+    inputValue.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        filterText = inputValue.value.toLowerCase();
+        render();
+      }
+    });
+  });
+
   function render(): void {
-    let newsHtml: string = todos
+    const filteredTodos =
+      filterText === ""
+        ? todos // ✅ 필터가 없을 땐 전체 목록 표시
+        : todos.filter((todo) => todo.text.toLowerCase().includes(filterText));
+
+    todolistWrap.innerHTML = filteredTodos
       .map(
         (item, index) =>
-          `<div class="todolist-items ${item.completed ? "change-color" : ""}">
+          `<div class="todolist-items ${
+            item.completed ? "change-color" : ""
+          }" data-index="${todos.indexOf(item)}">
             <div class="item">
               <p class="${item.completed ? "active" : ""}">${index + 1}.${
             item.text
@@ -68,7 +86,26 @@
         </div>`
       )
       .join("");
-
-    todolistWrap.innerHTML = newsHtml;
   }
 }
+
+//   function render(): void {
+//     let newsHtml: string = todos
+//       .map(
+//         (item, index) =>
+//           `<div class="todolist-items ${item.completed ? "change-color" : ""}">
+//             <div class="item">
+//               <p class="${item.completed ? "active" : ""}">${index + 1}.${
+//             item.text
+//           }</p>
+//             </div>
+//             <div class="done-delete-btn">
+//               <button class="check-btn"><i class="fa-solid fa-check"></i></button>
+//               <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+//             </div>
+//         </div>`
+//       )
+//       .join("");
+
+//     todolistWrap.innerHTML = newsHtml;
+//   }
