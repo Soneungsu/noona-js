@@ -6,6 +6,14 @@
   const todolistWrap =
     document.querySelector<HTMLDivElement>(".todolist-wrap")!;
   let filterText = "";
+  inputValue.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && inputValue.value.trim() !== "") {
+      todos.push({ text: inputValue.value, completed: false });
+      inputValue.value = ""; // 입력 값 초기화
+      filterText = ""; // 필터 초기화
+      render();
+    }
+  });
   todolistWrap.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
 
