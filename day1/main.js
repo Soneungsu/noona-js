@@ -38,9 +38,9 @@
 // console.log(!true); // !true = false
 // console.log(!false); // !false = true
 
-const person = {
-  1: "eungsu",
-  age: 32,
-};
+const person = [{
+    name: "eungsu",
+    age: 32
+}]
 
 console.log(person);

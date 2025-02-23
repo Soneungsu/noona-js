@@ -1,12 +1,13 @@
-var startBtn = document.querySelector("#startBtn");
-var resetBtn = document.querySelector("#resetBtn");
-var inputValue = document.querySelector("input");
-var repository = [];
-var resultArea = document.querySelector(".result");
-var chanceArea = document.querySelector(".chance-area");
-var chance = 5;
-var computerRandom = 0;
-var gameOver = false;
+"use strict";
+const startBtn = document.querySelector("#startBtn");
+const resetBtn = document.querySelector("#resetBtn");
+const inputValue = document.querySelector("input");
+const repository = [];
+let resultArea = document.querySelector(".result");
+let chanceArea = document.querySelector(".chance-area");
+let chance = 5;
+let computerRandom = 0;
+let gameOver = false;
 startBtn.addEventListener("click", play);
 resetBtn.addEventListener("click", reset);
 function pickRandonNum() {
@@ -17,7 +18,7 @@ computerRandom = pickRandonNum();
 console.log(computerRandom);
 //
 function play() {
-    var userInput = Number(inputValue.value);
+    const userInput = Number(inputValue.value);
     if (isNaN(userInput)) {
         alert("숫자를 입력하세요");
         inputValue.value = "";
@@ -28,7 +29,7 @@ function play() {
         inputValue.value = "";
         return;
     }
-    if (repository.some(function (num) { return num === userInput; })) {
+    if (repository.some((num) => num === userInput)) {
         resultArea.textContent = "이미 입력하였습니다";
         inputValue.value = "";
         return;
@@ -42,7 +43,7 @@ function play() {
         return;
     }
     chance--;
-    chanceArea.textContent = "".concat(chance, "\uBC88 \uB0A8\uC558\uC2B5\uB2C8\uB2E4.");
+    chanceArea.textContent = `${chance}번 남았습니다.`;
     // 유저가 입력한 값이 랜덤숫자보다 클경우 "down"
     // 유저가 입력한 값이 랜덤숫자보다 작을경우 "Up"
     if (userInput > computerRandom) {
@@ -62,7 +63,7 @@ function reset() {
     gameOver = false;
     startBtn.disabled = false;
     chance = 5;
-    chanceArea.textContent = "chance: ".concat(chance);
+    chanceArea.textContent = `chance: ${chance}`;
     resultArea.textContent = "It has been initialized";
     inputValue.value = "";
     repository.length = 0;

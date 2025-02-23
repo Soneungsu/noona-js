@@ -44,5 +44,5 @@
   // let coffees = newCoffee.makeCoffee(2);
   // console.log(coffees);
   let str = "hhsafsadf.sdafsdaf";
-  console.log(str.split(".")[1]);
+  console.log(str.split("."));
 }

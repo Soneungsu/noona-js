@@ -1,18 +1,19 @@
+"use strict";
 // "안녕 내 이름은 제시카야"라는 문장을 프린트하는 함수 'greet’를 만드시오
-var jessica = "제시카";
+const jessica = "제시카";
 function great() {
-    return "\uC548\uB155 \uB0B4 \uC774\uB984\uC740 ".concat(jessica, "\uC57C");
+    return `안녕 내 이름은 ${jessica}야`;
 }
 // 이름을 매개변수로 전달받아 다양한 이름을 프린트 할 수 있게 함수를 수정하시오 예) “안녕 내 이름은 에밀리야”, “안녕 내 이름은 할리야”
 function great2(name) {
-    return "\uC548\uB155 \uB0B4 \uC774\uB984\uC740 ".concat(name, "\uC57C");
+    return `안녕 내 이름은 ${name}야`;
 }
 console.log(great2("제시카"));
 // 매개변수로 전달받은 이름을 반환하게 함수를 수정하시오
 function named(name) {
-    return "\uC548\uB155 \uB098\uB294 ".concat(name, "\uC57C");
+    return `안녕 나는 ${name}야`;
 }
-var me = named("eungsu");
+const me = named("eungsu");
 console.log(me);
 //  meetAt 함수를 만들어주세요.
 //      인자를 세개 받습니다.
@@ -30,13 +31,13 @@ console.log(me);
 // meetAt(1987, 10, 28); // 결과 --> "1987/10/28"
 function meetAt(year, month, day) {
     if (year && month && day) {
-        return "".concat(year, "\uB144 ").concat(month, "\uC6D4 ").concat(day, "\uC77C");
+        return `${year}년 ${month}월 ${day}일`;
     }
     else if (year && month) {
-        return "".concat(year, "\uB144 ").concat(month, "\uC6D4");
+        return `${year}년 ${month}월`;
     }
     else {
-        return "".concat(day, "\uC77C");
+        return `${day}일`;
     }
 }
 console.log(meetAt(12, 3));
@@ -47,12 +48,12 @@ console.log(meetAt(12, 3));
 // 예를 들어, 다음과 같은 배열이 인자(input)으로 들어왔다면 0이 리턴 되어야 합니다.
 // 이용되는 배열
 // [100,200,3,0,2,1]
-var arr = [];
+let arr = [];
 function findSmallestElement(arr) {
     if (arr.length === 0) {
         return 0;
     }
-    var min = arr.sort(function (a, b) { return a - b; });
+    const min = arr.sort((a, b) => a - b);
     return min;
 }
 console.log(findSmallestElement(arr));
@@ -66,22 +67,17 @@ console.log(findSmallestElement(arr));
 //  500 X 0
 //  100 X 3
 function getMinimumCurrency(amount) {
-    var arr = [50000, 10000, 5000, 1000, 500, 100];
-    var result = {};
-    for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
-        var unit = arr_1[_i];
+    const arr = [50000, 10000, 5000, 1000, 500, 100];
+    const result = {};
+    for (let unit of arr) {
         result[unit] = Math.floor(amount / unit);
         amount %= unit;
     }
     console.log(result);
 }
 getMinimumCurrency(13200);
-function test() {
-    var numbers = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        numbers[_i] = arguments[_i];
-    }
+function test(...numbers) {
     // console.log(numbers);
-    return numbers.reduce(function (a, b) { return a + b; });
+    return numbers.reduce((a, b) => a + b);
 }
 console.log(test(1, 2, 3, 4));
